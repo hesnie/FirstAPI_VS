@@ -1,0 +1,28 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:53469/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "connectionString:cityInfoDVBConnectionString": "Server=\"myproductionserver;Database=CityInfoDB;UserId=CertainlyNotSA;Password=CertainlyNotSA;",
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    "FirstApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:53470"
+    }
+  }
+}
