@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FirstApi.Models;
 using FirstApi.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,7 +37,19 @@ namespace FirstApi.Service
 
         public IEnumerable<PointOfInterest> GetPointsOfInterestForCity(int cityId)
         {
-            return _context.PointOfInterest.Where(p => p.CityId == cityId).ToList();
+            return _context.PointOfInterest
+                .Where(p => p.CityId == cityId).ToList();
+        }
+
+        public PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId)
+        {
+            return _context.PointOfInterest.
+                Where(p => p.CityId == cityId && p.Id == pointOfInterestId).FirstOrDefault();
+        }
+
+        public bool CityExists(int cityId)
+        {
+            return _context.Cities.Any(c => c.Id == cityId);
         }
     }
 }

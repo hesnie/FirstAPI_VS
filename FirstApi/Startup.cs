@@ -77,6 +77,11 @@ namespace FirstApi
             app.UseStatusCodePages();
 
             app.UseMvc();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Entities.City, Models.CityWithoutPointsOfInterestDto>();
+            });
         }
     }
 }
