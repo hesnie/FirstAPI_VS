@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FirstApi.Service;
 using FirstApi.Models;
+using AutoMapper;
 
 namespace FirstApi.Controllers
 {
@@ -24,17 +25,17 @@ namespace FirstApi.Controllers
         {
             //return Ok(CitiesDataStore.Current.Cities);
             var cityEntities = _cityInfoRepository.GetCities();
-            var results = new List<CityWithoutPointsOfInterestDto>();
+            var results = Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
 
-            foreach (var cityEntity in cityEntities)
-            {
-                results.Add(new CityWithoutPointsOfInterestDto
-                {
-                    Id = cityEntity.Id,
-                    Description = cityEntity.Description,
-                    Name = cityEntity.Name
-                });
-            }
+            //foreach (var cityEntity in cityEntities)
+            //{
+            //    results.Add(new CityWithoutPointsOfInterestDto
+            //    {
+            //        Id = cityEntity.Id,
+            //        Description = cityEntity.Description,
+            //        Name = cityEntity.Name
+            //    });
+            //}
 
             return Ok(results);
         }
